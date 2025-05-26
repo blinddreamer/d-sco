@@ -15,12 +15,13 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: Arial, sans-serif;
   color: white;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Orbitron", sans-serif;
+  font-style: normal;
 }
 
 .content {
@@ -32,30 +33,23 @@ html {
 }
 
 .content h1 {
-  font-size: 3rem; /* big letters for company name */
-  margin: 0;
+  font-size: 3rem;
+  margin: -5px;
   text-transform: uppercase; /* optional: all caps */
 }
 
 .content h3 {
-  font-size: 1.5rem; /* smaller than h1 */
+  font-size: 1.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
   font-weight: normal;
+  margin-top: -5px;
 }
 
 a {
   display: inline-block;
-  margin-top: 1rem;
-  color: #00bfff;
+  color: white;
   text-decoration: none;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-}
-a:hover {
-  background: rgba(255, 255, 255, 0.2);
 }
 
 #dots {
@@ -68,4 +62,28 @@ a:hover {
   z-index: -1;
   background: radial-gradient(rgba(255, 255, 255, 0.1) 10%, transparent 10%);
   background-size: 1.5vmin 1.5vmin;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.8rem 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: flex-start; /* align left */
+}
+
+.nav-links {
+  font-size: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  margin: 0 0.4rem;
+  font-weight: normal;
+  transition: color 0.2s;
 }
