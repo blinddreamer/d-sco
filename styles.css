@@ -48,7 +48,6 @@ html {
 
 a {
   display: inline-block;
-  color: white;
   text-decoration: none;
 }
 
@@ -70,7 +69,6 @@ a {
   left: 0;
   width: 100%;
   padding: 0.8rem 2rem;
-  background: rgba(0, 0, 0, 0.6);
   z-index: 10;
   backdrop-filter: blur(4px);
   display: flex;
@@ -86,4 +84,23 @@ a {
   margin: 0 0.4rem;
   font-weight: normal;
   transition: color 0.2s;
+  color: #aaa;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem 2rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+#doh {
+  color: #aaa;
 }
