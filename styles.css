@@ -25,9 +25,23 @@ html {
 
 .content {
   z-index: 1;
-  background: rgba(0, 0, 0, 0.5); /* optional dark overlay */
-  padding: 2rem;
-  border-radius: 10px;
+  position: fixed;
+  top: 40%;
+  left: 40px;
+  text-align: left; /* align content left */
+}
+
+.content h1 {
+  font-size: 3rem; /* big letters for company name */
+  margin: 0;
+  text-transform: uppercase; /* optional: all caps */
+}
+
+.content h3 {
+  font-size: 1.5rem; /* smaller than h1 */
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-weight: normal;
 }
 
 a {
