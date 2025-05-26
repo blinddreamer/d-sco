@@ -27,7 +27,7 @@ html {
 .content {
   z-index: 1;
   position: fixed;
-  top: 40%;
+  top: 35%;
   left: 40px;
   text-align: left; /* align content left */
 }
@@ -44,6 +44,7 @@ html {
   margin-bottom: 0;
   font-weight: normal;
   margin-top: -5px;
+  margin-left: 15px;
 }
 
 a {
@@ -64,6 +65,7 @@ a {
 }
 
 .navbar {
+  margin-top: 25px;
   position: fixed;
   top: 0;
   left: 0;
@@ -98,6 +100,7 @@ a {
   color: #aaa;
   font-size: 0.9rem;
   z-index: 10;
+  margin-bottom: 25px;
 }
 
 #doh {
