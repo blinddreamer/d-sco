@@ -16,7 +16,6 @@ html {
   padding: 0;
   height: 100%;
   color: white;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +49,12 @@ html {
 a {
   display: inline-block;
   text-decoration: none;
+  color: #aaa;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #aaa;
 }
 
 #dots {
