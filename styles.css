@@ -21,6 +21,10 @@ html {
   align-items: center;
   font-family: "Orbitron", sans-serif;
   font-style: normal;
+  -webkit-user-select: none; /* Chrome, Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none; /* Standard */
 }
 
 .content {
