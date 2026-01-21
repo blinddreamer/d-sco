@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Deep Space Coalition | NEWS</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Deep Space Coalition is a PvP-focused EVE Online corporation. Join us in making space unsafe again."
+    />
+    <meta
+      name="keywords"
+      content="EVE Online, Corporation, Deep Space Coalition, PvP, zKillboard, EVE corp, New Eden"
+    />
+    <meta name="author" content="Deep Space Coalition" />
+
+    <!-- Open Graph (Facebook, Discord, etc.) -->
+    <meta
+      property="og:title"
+      content="Deep Space Coalition | EVE Online Corporation"
+    />
+    <meta
+      property="og:description"
+      content="Join Deep Space Coalition – a corp that's all about calculated losses and glorious explosions."
+    />
+    <meta property="og:image" content="https://d-sco.rocks/assets/card.png" />
+    <meta property="og:url" content="https://d-sco.rocks/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Deep Space Coalition | EVE Online Corporation"
+    />
+    <meta
+      name="twitter:description"
+      content="Join Deep Space Coalition – a corp that's all about calculated losses and glorious explosions."
+    />
+    <meta name="twitter:image" content="https://d-sco.rocks/assets/card.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="#" class="purifier-link">
+          <img src="assets/purifier.png" alt="Purifier" class="purifier-icon" />
+        </a>
+        <span id="doh">|</span>
+        <a href="index.html">Home</a>
+        <span id="doh">|</span>
+        <a href="https://auth.d-sco.rocks/">Auth</a>
+        <span id="doh">|</span>
+        <a href="https://wiki.d-sco.rocks/">Wiki</a>
+        <span id="doh">|</span>
+        <a href="news.html">News</a>
+        <span id="doh">|</span>
+        <a href="https://zkillboard.com/corporation/98519746/">Zkill</a>
+      </div>
+    </nav>
+
+    <div class="easter-egg hidden">
+      <img src="assets/logan.png" alt="CEO Killmail" />
+      <p>In the end, it wasn't the enemy that claimed him...</p>
+    </div>
+
+    <video autoplay muted loop id="bg-video">
+      <source src="assets/bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+      <h1>D-SCO WEEKLY NEWS</h1>
+      <h3>Broadcasting from deep space.</h3>
+
+      <div class="carousel-wrapper">
+        <button class="nav-btn left" onclick="moveCarousel(-1)">‹</button>
+
+        <div class="carousel-window">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- ADD / REMOVE IMAGES HERE -->
+            <div
+              class="carousel-item"
+              data-title="Mira Leaves Frat, Socks Still Missing"
+            >
+              <img
+                src="assets/news/weekly_news_00.jpg"
+                class="carousel-img"
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div
+              class="carousel-item"
+              data-title="Mira Leaves Frat, Socks Still Missing"
+            >
+              <img
+                src="assets/news/weekly_news_01.jpg"
+                class="carousel-img"
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div
+              class="carousel-item"
+              data-title="Zero casualties in a 500B fight, another Raven lost, and Zen refuses to leave his system."
+            >
+              <img
+                src="assets/news/weekly_news_02.jpg"
+                class="carousel-img"
+                onclick="openLightbox(this)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn right" onclick="moveCarousel(1)">›</button>
+      </div>
+
+      <!-- LIGHTBOX -->
+      <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" />
+      </div>
+    </div>
+
+    <div id="dots"></div>
+    <footer class="footer">
+      <p>&copy; d-sco.rocks</p>
+      <p>
+        EVE and related materials are trademarks of
+        <a href="https://www.ccpgames.com/">CCP hf</a>
+      </p>
+    </footer>
+
+    <script>
+      const purifier = document.querySelector(".purifier-link");
+      const egg = document.querySelector(".easter-egg");
+
+      purifier.addEventListener("click", (e) => {
+        e.preventDefault();
+        egg.classList.toggle("hidden");
+      });
+    </script>
+    <!-- ZOOMIN -->
+    <script src="news.js"></script>
+  </body>
+</html>
