@@ -43,16 +43,20 @@
     <meta name="twitter:image" content="https://d-sco.rocks/assets/card.png" />
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="../assets/" type="image/x-icon" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
     <nav class="navbar">
       <div class="nav-links">
         <a href="#" class="purifier-link">
-          <img src="assets/purifier.png" alt="Purifier" class="purifier-icon" />
+          <img
+            src="../assets/purifier.png"
+            alt="Purifier"
+            class="purifier-icon"
+          />
         </a>
         <span id="doh">|</span>
         <a href="https://d-sco.rocks/">Home</a>
@@ -61,19 +65,19 @@
         <span id="doh">|</span>
         <a href="https://wiki.d-sco.rocks/">Wiki</a>
         <span id="doh">|</span>
-        <a href="news.html">News</a>
+        <a href="/news/">News</a>
         <span id="doh">|</span>
         <a href="https://zkillboard.com/corporation/98519746/">Zkill</a>
       </div>
     </nav>
 
     <div class="easter-egg hidden">
-      <img src="assets/logan.png" alt="CEO Killmail" />
+      <img src="../assets/logan.png" alt="CEO Killmail" />
       <p>In the end, it wasn't the enemy that claimed him...</p>
     </div>
 
     <video autoplay muted loop id="bg-video">
-      <source src="assets/bg.mp4" type="video/mp4" />
+      <source src="../assets/bg.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
@@ -93,7 +97,7 @@
             >
               <div class="latest-badge">HOT</div>
               <img
-                src="assets/news/weekly_news_02.jpg"
+                src="../assets/news/weekly_news_02.jpg"
                 class="carousel-img"
                 onclick="openLightbox(this)"
               />
@@ -103,7 +107,7 @@
               data-title="Mira Leaves Frat, Socks Still Missing"
             >
               <img
-                src="assets/news/weekly_news_01.jpg"
+                src="../assets/news/weekly_news_01.jpg"
                 class="carousel-img"
                 onclick="openLightbox(this)"
               />
@@ -113,7 +117,7 @@
               data-title="Structures secured, mistakes made, ceptors eliminated."
             >
               <img
-                src="assets/news/weekly_news_00.jpg"
+                src="../assets/news/weekly_news_00.jpg"
                 class="carousel-img"
                 onclick="openLightbox(this)"
               />
@@ -139,15 +143,8 @@
       </p>
     </footer>
 
-    <script>
-      const purifier = document.querySelector(".purifier-link");
-      const egg = document.querySelector(".easter-egg");
-
-      purifier.addEventListener("click", (e) => {
-        e.preventDefault();
-        egg.classList.toggle("hidden");
-      });
-    </script>
+    <!-- LOGAN -->
+    <script src="../logan.js"></script>
     <!-- ZOOMIN -->
     <script src="news.js"></script>
   </body>
