@@ -4,28 +4,27 @@ let visibleCount = 3;
 
 // Detect visible count from CSS
 function updateVisibleCount() {
-  if (window.innerWidth <= 600) visibleCount = 1;
-  else if (window.innerWidth <= 900) visibleCount = 2;
+  if (window.innerWidth <= 720) visibleCount = 1;
+  else if (window.innerWidth <= 1050) visibleCount = 2;
   else visibleCount = 3;
 }
 
 // Duplicate images to allow infinite looping
 function setupCarousel() {
-  const originals = Array.from(track.children);
-  while (track.children.length < originals.length + visibleCount * 2) {
-    originals.forEach((img) => {
-      track.appendChild(img.cloneNode(true));
-    });
-  }
+  // Infinite loop removed
 }
 
 function moveCarousel(dir) {
   updateVisibleCount();
-  const imgWidth = 240; // image + gap
+  const imgWidth = 260; // image (250) + gap (10)
+  const maxIndex = Math.max(0, track.children.length - visibleCount);
+
   index += dir;
 
   if (index < 0) {
-    index = track.children.length - visibleCount;
+    index = 0;
+  } else if (index > maxIndex) {
+    index = maxIndex;
   }
 
   track.style.transform = `translateX(${-index * imgWidth}px)`;
