@@ -16,7 +16,12 @@ function setupCarousel() {
 
 function moveCarousel(dir) {
   updateVisibleCount();
-  const imgWidth = 260; // image (250) + gap (10)
+
+  const item = track.firstElementChild;
+  const style = getComputedStyle(track);
+  const gap = parseFloat(style.gap) || 10;
+  const imgWidth = (item ? item.offsetWidth : 250) + gap;
+
   const maxIndex = Math.max(0, track.children.length - visibleCount);
 
   index += dir;
