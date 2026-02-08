@@ -1,3 +1,4 @@
+// --- CAROUSEL SETUP ---
 const track = document.getElementById("carouselTrack");
 let index = 0;
 let visibleCount = 3;
@@ -9,11 +10,12 @@ function updateVisibleCount() {
   else visibleCount = 3;
 }
 
-// Duplicate images to allow infinite looping
+// Setup Carousel (infinite loop removed for simplicity)
 function setupCarousel() {
-  // Infinite loop removed
+  // Nothing here since infinite looping removed
 }
 
+// Move carousel left/right
 function moveCarousel(dir) {
   updateVisibleCount();
 
@@ -35,20 +37,25 @@ function moveCarousel(dir) {
   track.style.transform = `translateX(${-index * imgWidth}px)`;
 }
 
+// --- LIGHTBOX ---
 function openLightbox(img) {
-  document.getElementById("lightboxImg").src = img.src;
-  document.getElementById("lightbox").style.display = "flex";
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const fullSizeLink = document.getElementById("fullSizeLink");
+
+  lightboxImg.src = img.src;
+  fullSizeLink.href = img.src; // set link to original image
+  lightbox.style.display = "flex";
 }
 
-function closeLightbox() {
+function closeLightbox(e) {
+  // Prevent closing if user clicked the "Open Full Size" link
+  if (e && e.target.id === "fullSizeLink") return;
+
   document.getElementById("lightbox").style.display = "none";
 }
 
-window.addEventListener("resize", () => {
-  index = 0;
-  track.style.transform = "translateX(0)";
-});
-
+// --- CAROUSEL TITLES ---
 document.querySelectorAll(".carousel-item").forEach((item) => {
   const title = item.dataset.title;
   const titleEl = document.createElement("div");
@@ -57,5 +64,12 @@ document.querySelectorAll(".carousel-item").forEach((item) => {
   item.appendChild(titleEl);
 });
 
+// --- WINDOW RESIZE ---
+window.addEventListener("resize", () => {
+  index = 0;
+  track.style.transform = "translateX(0)";
+});
+
+// --- INITIALIZE ---
 updateVisibleCount();
 setupCarousel();

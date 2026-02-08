@@ -350,3 +350,34 @@ body {
 
   pointer-events: none;
 }
+
+.lightbox {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  margin-bottom: 10px;
+}
+
+#fullSizeLink {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#fullSizeLink {
+  color: #fff;
+  text-decoration: none; /* remove underline */
+  font-size: 1rem;
+  cursor: pointer;
+}
