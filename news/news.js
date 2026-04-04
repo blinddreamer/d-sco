@@ -3,19 +3,12 @@ const track = document.getElementById("carouselTrack");
 let index = 0;
 let visibleCount = 3;
 
-// Detect visible count from CSS
 function updateVisibleCount() {
   if (window.innerWidth <= 720) visibleCount = 1;
   else if (window.innerWidth <= 1050) visibleCount = 2;
   else visibleCount = 3;
 }
 
-// Setup Carousel (infinite loop removed for simplicity)
-function setupCarousel() {
-  // Nothing here since infinite looping removed
-}
-
-// Move carousel left/right
 function moveCarousel(dir) {
   updateVisibleCount();
 
@@ -44,32 +37,50 @@ function openLightbox(img) {
   const fullSizeLink = document.getElementById("fullSizeLink");
 
   lightboxImg.src = img.src;
-  fullSizeLink.href = img.src; // set link to original image
+  fullSizeLink.href = img.src;
   lightbox.style.display = "flex";
 }
 
 function closeLightbox(e) {
-  // Prevent closing if user clicked the "Open Full Size" link
   if (e && e.target.id === "fullSizeLink") return;
-
   document.getElementById("lightbox").style.display = "none";
 }
 
-// --- CAROUSEL TITLES ---
-document.querySelectorAll(".carousel-item").forEach((item) => {
-  const title = item.dataset.title;
-  const titleEl = document.createElement("div");
-  titleEl.className = "carousel-title";
-  titleEl.textContent = title;
-  item.appendChild(titleEl);
-});
+// --- BUILD CAROUSEL FROM JSON ---
+fetch("../assets/news/news-data.json")
+  .then((res) => res.json())
+  .then((items) => {
+    items.forEach((item, i) => {
+      const div = document.createElement("div");
+      div.className = "carousel-item";
+      div.dataset.title = item.title;
+
+      if (i === 0) {
+        const badge = document.createElement("div");
+        badge.className = "latest-badge";
+        badge.textContent = "HOT";
+        div.appendChild(badge);
+      }
+
+      const img = document.createElement("img");
+      img.src = `../assets/news/${item.file}`;
+      img.className = "carousel-img";
+      img.onclick = () => openLightbox(img);
+      div.appendChild(img);
+
+      const titleEl = document.createElement("div");
+      titleEl.className = "carousel-title";
+      titleEl.textContent = item.title;
+      div.appendChild(titleEl);
+
+      track.appendChild(div);
+    });
+
+    updateVisibleCount();
+  });
 
 // --- WINDOW RESIZE ---
 window.addEventListener("resize", () => {
   index = 0;
   track.style.transform = "translateX(0)";
 });
-
-// --- INITIALIZE ---
-updateVisibleCount();
-setupCarousel();
