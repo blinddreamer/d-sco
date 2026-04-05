@@ -66,7 +66,6 @@
         <a href="https://leaderboard.d-sco.rocks/">Leaderboard</a>
         <span id="doh">|</span>
         <a href="https://zkillboard.com/corporation/98519746/">Zkill</a>
-        <span id="doh">|</span>
       </div>
     </nav>
 
@@ -84,10 +83,11 @@
     <div class="content" id="page-home">
       <h1>Deep Space Coalition</h1>
       <h3>...we totally meant to feed.</h3>
+      <a href="https://wiki.d-sco.rocks/onboarding" class="apply-btn" target="_blank">Apply Now</a>
     </div>
 
     <!-- NEWS -->
-    <div class="content" id="page-news" style="display:none">
+    <div class="content" id="page-news" style="display: none">
       <h1>D-SCO WEEKLY NEWS</h1>
       <h3>Broadcasting from deep space.</h3>
 
@@ -110,6 +110,12 @@
       </div>
     </div>
 
+    <div class="corp-stats" id="corp-stats">
+      <div class="stat"><span class="stat-label">Ships Killed</span><span class="stat-value" id="stat-kills">—</span></div>
+      <div class="stat"><span class="stat-label">ISK Destroyed</span><span class="stat-value" id="stat-isk">—</span></div>
+      <div class="stat"><span class="stat-label">Ships Lost</span><span class="stat-value" id="stat-lost">—</span></div>
+    </div>
+
     <div id="dots"></div>
     <footer class="footer">
       <p>&copy; d-sco.rocks</p>
@@ -130,15 +136,29 @@
 
     <!-- LOGAN -->
     <script src="logan.js"></script>
+    <!-- STATS -->
+    <script src="stats.js"></script>
     <!-- NEWS -->
     <script src="news/news.js"></script>
     <!-- ANALYTICS -->
     <script>
-      var sc_project=13214553;
-      var sc_invisible=1;
-      var sc_security="ef14e102";
+      var sc_project = 13214553;
+      var sc_invisible = 1;
+      var sc_security = "ef14e102";
     </script>
     <script src="https://www.statcounter.com/counter/counter.js" async></script>
-    <noscript><div class="statcounter"><a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13214553/0/ef14e102/1/" alt="Web Analytics Made Easy - Statcounter" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+    <noscript
+      ><div class="statcounter">
+        <a
+          title="Web Analytics Made Easy - Statcounter"
+          href="https://statcounter.com/"
+          target="_blank"
+          ><img
+            class="statcounter"
+            src="https://c.statcounter.com/13214553/0/ef14e102/1/"
+            alt="Web Analytics Made Easy - Statcounter"
+            referrerpolicy="no-referrer-when-downgrade"
+        /></a></div
+    ></noscript>
   </body>
 </html>
