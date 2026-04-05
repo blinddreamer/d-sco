@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Deep Space Coalition | EVE Online Corporation</title>
+    <title>Deep Space Coalition</title>
 
     <!-- SEO Meta Tags -->
     <meta
@@ -61,7 +61,7 @@
         <span id="doh">|</span>
         <a href="https://wiki.d-sco.rocks/">Wiki</a>
         <span id="doh">|</span>
-        <a href="/news/">News</a>
+        <a href="/news">News</a>
         <span id="doh">|</span>
         <a href="https://leaderboard.d-sco.rocks/">Leaderboard</a>
         <span id="doh">|</span>
@@ -80,9 +80,34 @@
       Your browser does not support the video tag.
     </video>
 
-    <div class="content">
+    <!-- HOME -->
+    <div class="content" id="page-home">
       <h1>Deep Space Coalition</h1>
       <h3>...we totally meant to feed.</h3>
+    </div>
+
+    <!-- NEWS -->
+    <div class="content" id="page-news" style="display:none">
+      <h1>D-SCO WEEKLY NEWS</h1>
+      <h3>Broadcasting from deep space.</h3>
+
+      <div class="carousel-wrapper">
+        <button class="nav-btn left" onclick="moveCarousel(-1)">‹</button>
+
+        <div class="carousel-window">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- populated by news.js from assets/news/news-data.json -->
+          </div>
+        </div>
+
+        <button class="nav-btn right" onclick="moveCarousel(1)">›</button>
+      </div>
+
+      <!-- LIGHTBOX -->
+      <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" />
+        <a id="fullSizeLink" href="#" target="_blank">Open Full Size</a>
+      </div>
     </div>
 
     <div id="dots"></div>
@@ -93,7 +118,21 @@
         <a href="https://www.ccpgames.com/">CCP hf</a>
       </p>
     </footer>
+
+    <!-- ROUTING -->
+    <script>
+      if (window.location.pathname.startsWith("/news")) {
+        document.title = "Deep Space Coalition | NEWS";
+        document.getElementById("page-home").style.display = "none";
+        document.getElementById("page-news").style.display = "";
+      }
+    </script>
+
     <!-- LOGAN -->
     <script src="logan.js"></script>
+    <!-- NEWS -->
+    <script src="news/news.js"></script>
+    <!-- ANALYTICS -->
+    <script src="statcounter.js"></script>
   </body>
 </html>

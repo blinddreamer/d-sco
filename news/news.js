@@ -47,7 +47,7 @@ function closeLightbox(e) {
 }
 
 // --- BUILD CAROUSEL FROM JSON ---
-fetch("../assets/news/news-data.json")
+fetch("assets/news/news-data.json")
   .then((res) => res.json())
   .then((items) => {
     items.forEach((item, i) => {
@@ -63,7 +63,7 @@ fetch("../assets/news/news-data.json")
       }
 
       const img = document.createElement("img");
-      img.src = `../assets/news/${item.file}`;
+      img.src = `assets/news/${item.file}`;
       img.className = "carousel-img";
       img.onclick = () => openLightbox(img);
       div.appendChild(img);
