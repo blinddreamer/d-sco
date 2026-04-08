@@ -156,7 +156,7 @@
         document.title = "Deep Space Coalition | NEWS";
         document.getElementById("page-home").style.display = "none";
         document.getElementById("page-news").style.display = "";
-      } else if (path.startsWith("/404")) {
+      } else if (window.location.search.includes("404")) {
         document.title = "Deep Space Coalition | 404";
         document.getElementById("page-home").style.display = "none";
         document.getElementById("page-404").style.display = "";
