@@ -29,6 +29,37 @@ a:visited {
   color: #aaa;
 }
 
+/* ===== LOADER ===== */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+}
+
+#loader span {
+  font-size: 1.2rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #aaa;
+  animation: loader-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.loader-hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ===== BACKGROUND ===== */
 
 #bg-video {
@@ -109,7 +140,7 @@ a:visited {
   opacity: 1;
 }
 
-/* ===== CONTENT ===== */
+/* ===== PAGE TRANSITIONS ===== */
 
 .content {
   z-index: 1;
@@ -118,6 +149,21 @@ a:visited {
   left: 2rem;
   text-align: left;
   max-width: calc(100vw - 4rem);
+  animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.content.fade-out {
+  animation: fade-out 0.3s ease forwards;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
 }
 
 .content h1 {

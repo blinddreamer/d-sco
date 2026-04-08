@@ -49,6 +49,10 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="loader">
+      <span>D-SCO</span>
+    </div>
+
     <nav class="navbar">
       <div class="nav-links">
         <a href="#" class="purifier-link">
@@ -79,11 +83,22 @@
       Your browser does not support the video tag.
     </video>
 
+    <!-- 404 -->
+    <div class="content" id="page-404" style="display: none">
+      <h1>404</h1>
+      <h3>Can't I holiday in peace for once?</h3>
+    </div>
+
     <!-- HOME -->
     <div class="content" id="page-home">
       <h1>Deep Space Coalition</h1>
       <h3>...we totally meant to feed.</h3>
-      <a href="https://wiki.d-sco.rocks/onboarding" class="apply-btn" target="_blank">Apply Now</a>
+      <a
+        href="https://wiki.d-sco.rocks/onboarding"
+        class="apply-btn"
+        target="_blank"
+        >Apply Now</a
+      >
     </div>
 
     <!-- NEWS -->
@@ -111,9 +126,18 @@
     </div>
 
     <div class="corp-stats" id="corp-stats">
-      <div class="stat"><span class="stat-label">Ships Killed</span><span class="stat-value" id="stat-kills">—</span></div>
-      <div class="stat"><span class="stat-label">ISK Destroyed</span><span class="stat-value" id="stat-isk">—</span></div>
-      <div class="stat"><span class="stat-label">Ships Lost</span><span class="stat-value" id="stat-lost">—</span></div>
+      <div class="stat">
+        <span class="stat-label">Ships Killed</span
+        ><span class="stat-value" id="stat-kills">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">ISK Destroyed</span
+        ><span class="stat-value" id="stat-isk">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Ships Lost</span
+        ><span class="stat-value" id="stat-lost">—</span>
+      </div>
     </div>
 
     <div id="dots"></div>
@@ -127,13 +151,46 @@
 
     <!-- ROUTING -->
     <script>
-      if (window.location.pathname.startsWith("/news")) {
+      const path = window.location.pathname;
+      if (path.startsWith("/news")) {
         document.title = "Deep Space Coalition | NEWS";
         document.getElementById("page-home").style.display = "none";
         document.getElementById("page-news").style.display = "";
+      } else if (path.startsWith("/404")) {
+        document.title = "Deep Space Coalition | 404";
+        document.getElementById("page-home").style.display = "none";
+        document.getElementById("page-404").style.display = "";
       }
+
+      // Smooth transition on nav link clicks
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("http") || href === "#") return;
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const content = document.querySelector(
+            ".content:not([style*='display: none'])",
+          );
+          if (content) {
+            content.classList.add("fade-out");
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          } else {
+            window.location.href = href;
+          }
+        });
+      });
     </script>
 
+    <!-- LOADER -->
+    <script>
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        loader.classList.add("loader-hide");
+        loader.addEventListener("transitionend", () => loader.remove());
+      });
+    </script>
     <!-- LOGAN -->
     <script src="logan.js"></script>
     <!-- STATS -->
