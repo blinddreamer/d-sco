@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Space Coalition | 404</title>
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="loader">
+      <span>D-SCO</span>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="#" class="purifier-link">
+          <img src="assets/purifier.png" alt="Purifier" class="purifier-icon" />
+        </a>
+        <span id="doh">|</span>
+        <a href="https://d-sco.rocks/">Home</a>
+        <span id="doh">|</span>
+        <a href="https://auth.d-sco.rocks/">Auth</a>
+        <span id="doh">|</span>
+        <a href="https://wiki.d-sco.rocks/">Wiki</a>
+        <span id="doh">|</span>
+        <a href="/news">News</a>
+        <span id="doh">|</span>
+        <a href="https://leaderboard.d-sco.rocks/">Leaderboard</a>
+        <span id="doh">|</span>
+        <a href="https://zkillboard.com/corporation/98519746/">Zkill</a>
+      </div>
+    </nav>
+
+    <div class="easter-egg hidden">
+      <img src="assets/logan.png" alt="CEO Killmail" />
+      <p>In the end, it wasn't the enemy that claimed him...</p>
+    </div>
+
+    <video autoplay muted loop id="bg-video">
+      <source src="assets/bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+      <h1>Can't I holiday in peace for once?</h1>
+      <h3>404 - Not Found</h3>
+    </div>
+
+    <div id="dots"></div>
+    <footer class="footer">
+      <p>&copy; d-sco.rocks</p>
+      <p>
+        EVE and related materials are trademarks of
+        <a href="https://www.ccpgames.com/">CCP hf</a>
+      </p>
+    </footer>
+
+    <script>
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        loader.classList.add("loader-hide");
+        loader.addEventListener("transitionend", () => loader.remove());
+      });
+    </script>
+    <script src="logan.js"></script>
+  </body>
+</html>

@@ -83,12 +83,6 @@
       Your browser does not support the video tag.
     </video>
 
-    <!-- 404 -->
-    <div class="content" id="page-404" style="display: none">
-      <h1>404</h1>
-      <h3>Can't I holiday in peace for once?</h3>
-    </div>
-
     <!-- HOME -->
     <div class="content" id="page-home">
       <h1>Deep Space Coalition</h1>
@@ -156,10 +150,6 @@
         document.title = "Deep Space Coalition | NEWS";
         document.getElementById("page-home").style.display = "none";
         document.getElementById("page-news").style.display = "";
-      } else if (window.location.search.includes("404")) {
-        document.title = "Deep Space Coalition | 404";
-        document.getElementById("page-home").style.display = "none";
-        document.getElementById("page-404").style.display = "";
       }
 
       // Smooth transition on nav link clicks
