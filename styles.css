@@ -337,7 +337,7 @@ a:visited {
 
 .carousel-img {
   width: var(--c-width);
-  height: 160px;
+  height: 350px;
   object-fit: cover;
   cursor: pointer;
   opacity: 0.85;
