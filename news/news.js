@@ -13,19 +13,15 @@ function moveCarousel(dir) {
   updateVisibleCount();
 
   const item = track.firstElementChild;
+  if (!item) return;
+
   const style = getComputedStyle(track);
   const gap = parseFloat(style.gap) || 10;
-  const imgWidth = (item ? item.offsetWidth : 250) + gap;
+  const imgWidth = item.offsetWidth + gap;
 
   const maxIndex = Math.max(0, track.children.length - visibleCount);
 
-  index += dir;
-
-  if (index < 0) {
-    index = 0;
-  } else if (index > maxIndex) {
-    index = maxIndex;
-  }
+  index = Math.min(Math.max(index + dir, 0), maxIndex);
 
   track.style.transform = `translateX(${-index * imgWidth}px)`;
 }
@@ -33,11 +29,8 @@ function moveCarousel(dir) {
 // --- LIGHTBOX ---
 function openLightbox(img) {
   const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  const fullSizeLink = document.getElementById("fullSizeLink");
-
-  lightboxImg.src = img.src;
-  fullSizeLink.href = img.src;
+  document.getElementById("lightboxImg").src = img.src;
+  document.getElementById("fullSizeLink").href = img.src;
   lightbox.style.display = "flex";
 }
 
@@ -46,14 +39,28 @@ function closeLightbox(e) {
   document.getElementById("lightbox").style.display = "none";
 }
 
+// --- TOUCH / SWIPE ---
+let touchStartX = 0;
+
+track.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+track.addEventListener("touchend", (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
+}, { passive: true });
+
 // --- BUILD CAROUSEL FROM JSON ---
 fetch("assets/news/news-data.json")
-  .then((res) => res.json())
+  .then((res) => {
+    if (!res.ok) throw new Error("Failed to load news");
+    return res.json();
+  })
   .then((items) => {
     items.forEach((item, i) => {
       const div = document.createElement("div");
       div.className = "carousel-item";
-      div.dataset.title = item.title;
 
       if (i === 0) {
         const badge = document.createElement("div");
@@ -65,6 +72,7 @@ fetch("assets/news/news-data.json")
       const img = document.createElement("img");
       img.src = `assets/news/${item.file}`;
       img.className = "carousel-img";
+      img.alt = item.title;
       img.onclick = () => openLightbox(img);
       div.appendChild(img);
 
@@ -77,10 +85,17 @@ fetch("assets/news/news-data.json")
     });
 
     updateVisibleCount();
+  })
+  .catch(() => {
+    const msg = document.createElement("p");
+    msg.style.cssText = "color:#666;font-size:0.85rem;letter-spacing:1px;padding:20px;";
+    msg.textContent = "No news available.";
+    track.appendChild(msg);
   });
 
 // --- WINDOW RESIZE ---
 window.addEventListener("resize", () => {
+  updateVisibleCount();
   index = 0;
   track.style.transform = "translateX(0)";
 });
