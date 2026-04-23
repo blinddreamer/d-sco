@@ -49,10 +49,17 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- MOBILE NAV OVERLAY -->
     <div id="mobile-overlay">
-      <img src="assets/purifier.png" alt="D-SCO Logo">
-      <h2>Deep Space Coalition</h2>
-      <p>This site is optimised for desktop.<br>Visit us on a larger screen for the best experience.</p>
+      <button id="mobile-close">&times;</button>
+      <nav id="mobile-nav">
+        <a href="https://d-sco.rocks/">Home</a>
+        <a href="https://auth.d-sco.rocks/">Auth</a>
+        <a href="https://wiki.d-sco.rocks/">Wiki</a>
+        <a href="/news">News</a>
+        <a href="https://leaderboard.d-sco.rocks/">Leaderboard</a>
+        <a href="https://zkillboard.com/corporation/98519746/">Zkill</a>
+      </nav>
     </div>
 
     <div id="loader">
@@ -60,6 +67,9 @@
     </div>
 
     <nav class="navbar">
+      <button id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
       <div class="nav-links">
         <a href="#" class="purifier-link">
           <img src="assets/purifier.png" alt="Purifier" class="purifier-icon" />
@@ -187,6 +197,8 @@
         loader.addEventListener("transitionend", () => loader.remove());
       });
     </script>
+    <!-- MENU -->
+    <script src="menu.js"></script>
     <!-- LOGAN -->
     <script src="logan.js"></script>
     <!-- STATS -->
