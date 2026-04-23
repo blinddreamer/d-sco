@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
 /* ===== BASE ===== */
 
 body,
@@ -11,7 +13,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   font-style: normal;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -215,7 +217,7 @@ a:visited {
   border-radius: 12px;
   z-index: 100;
   color: white;
-  font-family: sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   max-width: 1000px;
   width: 95%;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
@@ -242,7 +244,7 @@ a:visited {
   padding: 0.6rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #fff;
-  font-family: sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.85rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -297,7 +299,7 @@ a:visited {
 
 .stat-value {
   font-size: 1.1rem;
-  font-family: sans-serif;
+  font-family: 'Share Tech Mono', monospace;
   color: #fff;
   margin-top: 2px;
 }
