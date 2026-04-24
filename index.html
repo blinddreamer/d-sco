@@ -3,52 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Deep Space Coalition</title>
 
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="Deep Space Coalition is a PvP-focused EVE Online corporation. Join us in making space unsafe again."
-    />
-    <meta
-      name="keywords"
-      content="EVE Online, Corporation, Deep Space Coalition, PvP, zKillboard, EVE corp, New Eden"
-    />
+    <!-- SEO -->
+    <meta name="description" content="Deep Space Coalition is a PvP-focused EVE Online corporation. Join us in making space unsafe again." />
+    <meta name="keywords" content="EVE Online, Corporation, Deep Space Coalition, PvP, zKillboard, EVE corp, New Eden" />
     <meta name="author" content="Deep Space Coalition" />
 
-    <!-- Open Graph (Facebook, Discord, etc.) -->
-    <meta
-      property="og:title"
-      content="Deep Space Coalition | EVE Online Corporation"
-    />
-    <meta
-      property="og:description"
-      content="Join Deep Space Coalition – a corp that's all about calculated losses and glorious explosions."
-    />
+    <!-- OG -->
+    <meta property="og:title" content="Deep Space Coalition | EVE Online Corporation" />
+    <meta property="og:description" content="Join Deep Space Coalition – a corp that's all about calculated losses and glorious explosions." />
     <meta property="og:image" content="https://d-sco.rocks/assets/card.png" />
     <meta property="og:url" content="https://d-sco.rocks/" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Deep Space Coalition | EVE Online Corporation"
-    />
-    <meta
-      name="twitter:description"
-      content="Join Deep Space Coalition – a corp that's all about calculated losses and glorious explosions."
-    />
+    <meta name="twitter:title" content="Deep Space Coalition | EVE Online Corporation" />
+    <meta name="twitter:description" content="Join Deep Space Coalition – a corp that's all about calculated losses and glorious explosions." />
     <meta name="twitter:image" content="https://d-sco.rocks/assets/card.png" />
 
-    <!-- Favicon -->
     <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
-
-    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
     <!-- MOBILE NAV OVERLAY -->
     <div id="mobile-overlay">
       <button id="mobile-close">&times;</button>
@@ -62,126 +44,130 @@
       </nav>
     </div>
 
+    <!-- LOADER -->
     <div id="loader">
-      <span>D-SCO</span>
+      <div class="loader-inner">
+        <span class="loader-text">D-SCO</span>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+      </div>
     </div>
 
+    <!-- NAVBAR -->
     <nav class="navbar">
       <button id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links">
-        <a href="#" class="purifier-link">
+        <a href="#" class="purifier-link" aria-label="Easter egg">
           <img src="assets/purifier.png" alt="Purifier" class="purifier-icon" />
         </a>
-        <span id="doh">|</span>
+        <span class="sep">|</span>
         <a href="https://d-sco.rocks/">Home</a>
-        <span id="doh">|</span>
+        <span class="sep">|</span>
         <a href="https://auth.d-sco.rocks/">Auth</a>
-        <span id="doh">|</span>
+        <span class="sep">|</span>
         <a href="https://wiki.d-sco.rocks/">Wiki</a>
-        <span id="doh">|</span>
+        <span class="sep">|</span>
         <a href="/news">News</a>
-        <span id="doh">|</span>
+        <span class="sep">|</span>
         <a href="https://leaderboard.d-sco.rocks/">Leaderboard</a>
-        <span id="doh">|</span>
+        <span class="sep">|</span>
         <a href="https://zkillboard.com/corporation/98519746/">Zkill</a>
       </div>
     </nav>
 
+    <!-- EASTER EGG -->
     <div class="easter-egg hidden">
       <img src="assets/logan.png" alt="CEO Killmail" />
       <p>In the end, it wasn't the enemy that claimed him...</p>
     </div>
 
-    <video autoplay muted loop id="bg-video">
+    <!-- BACKGROUND -->
+    <canvas id="star-canvas"></canvas>
+    <video autoplay muted loop playsinline id="bg-video">
       <source src="assets/bg.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
     </video>
+    <div id="scanlines"></div>
+    <div id="dots"></div>
 
-    <!-- HOME -->
+    <!-- HOME PAGE -->
     <div class="content" id="page-home">
-      <h1>Deep Space Coalition</h1>
+      <div class="hero-eyebrow">EVE ONLINE CORPORATION</div>
+      <h1 data-text="Deep Space Coalition">Deep Space Coalition</h1>
       <h3>...we totally meant to feed.</h3>
-      <a
-        href="https://wiki.d-sco.rocks"
-        class="apply-btn"
-        target="_blank"
-        >Apply Now</a
-      >
+      <div class="hero-actions">
+        <a href="https://wiki.d-sco.rocks" class="apply-btn" target="_blank">Apply Now</a>
+      </div>
     </div>
 
-    <!-- NEWS -->
-    <div class="content" id="page-news" style="display: none">
-      <h1>D-SCO WEEKLY NEWS</h1>
+    <!-- NEWS PAGE -->
+    <div class="content" id="page-news" style="display:none">
+      <h1 data-text="D-SCO WEEKLY NEWS">D-SCO Weekly News</h1>
       <h3>Broadcasting from deep space.</h3>
-
-      <div class="carousel-wrapper">
-        <button class="nav-btn left" onclick="moveCarousel(-1)">‹</button>
-
-        <div class="carousel-window">
-          <div class="carousel-track" id="carouselTrack">
-            <!-- populated by news.js from assets/news/news-data.json -->
+      <div class="news-layout">
+        <div class="news-col">
+          <div class="carousel-wrapper">
+            <button class="nav-btn left" onclick="moveCarousel(-1)" aria-label="Previous">‹</button>
+            <div class="carousel-window">
+              <div class="carousel-track" id="carouselTrack"></div>
+            </div>
+            <button class="nav-btn right" onclick="moveCarousel(1)" aria-label="Next">›</button>
           </div>
         </div>
-
-        <button class="nav-btn right" onclick="moveCarousel(1)">›</button>
+        <div class="bsky-col">
+          <div class="bsky-feed" id="bskyFeed"></div>
+        </div>
       </div>
-
-      <!-- LIGHTBOX -->
       <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <img id="lightboxImg" />
+        <img id="lightboxImg" alt="News" />
         <a id="fullSizeLink" href="#" target="_blank">Open Full Size</a>
       </div>
     </div>
 
+    <!-- STATS -->
     <div class="corp-stats" id="corp-stats">
       <div class="stat">
-        <span class="stat-label">Ships Killed</span
-        ><span class="stat-value" id="stat-kills">—</span>
+        <span class="stat-label">Ships Killed</span>
+        <span class="stat-value" id="stat-kills">—</span>
       </div>
       <div class="stat">
-        <span class="stat-label">ISK Destroyed</span
-        ><span class="stat-value" id="stat-isk">—</span>
+        <span class="stat-label">ISK Destroyed</span>
+        <span class="stat-value" id="stat-isk">—</span>
       </div>
       <div class="stat">
-        <span class="stat-label">Ships Lost</span
-        ><span class="stat-value" id="stat-lost">—</span>
+        <span class="stat-label">Ships Lost</span>
+        <span class="stat-value" id="stat-lost">—</span>
       </div>
     </div>
 
-    <div id="dots"></div>
     <footer class="footer">
       <p>&copy; d-sco.rocks</p>
-      <p>
-        EVE and related materials are trademarks of
-        <a href="https://www.ccpgames.com/">CCP hf</a>
-      </p>
+      <p>EVE and related materials are trademarks of <a href="https://www.ccpgames.com/" target="_blank">CCP hf</a></p>
     </footer>
 
     <!-- ROUTING -->
     <script>
       const path = window.location.pathname;
-      if (path.startsWith("/news")) {
+      const isNews = path.startsWith("/news");
+      if (isNews) {
         document.title = "Deep Space Coalition | NEWS";
         document.getElementById("page-home").style.display = "none";
         document.getElementById("page-news").style.display = "";
+        document.body.classList.add("news-page");
+        const s = document.createElement("script");
+        s.src = "bsky.js";
+        document.body.appendChild(s);
       }
 
-      // Smooth transition on nav link clicks
       document.querySelectorAll(".nav-links a").forEach((link) => {
         const href = link.getAttribute("href");
         if (!href || href.startsWith("http") || href === "#") return;
         link.addEventListener("click", (e) => {
           e.preventDefault();
-          const content = document.querySelector(
-            ".content:not([style*='display: none'])",
-          );
+          const content = document.querySelector(".content:not([style*='display: none'])");
           if (content) {
             content.classList.add("fade-out");
-            setTimeout(() => {
-              window.location.href = href;
-            }, 300);
+            setTimeout(() => { window.location.href = href; }, 300);
           } else {
             window.location.href = href;
           }
@@ -194,17 +180,183 @@
       window.addEventListener("load", () => {
         const loader = document.getElementById("loader");
         loader.classList.add("loader-hide");
-        loader.addEventListener("transitionend", () => loader.remove());
+        loader.addEventListener("transitionend", () => loader.remove(), { once: true });
       });
     </script>
+
+    <!-- STAR CANVAS -->
+    <script>
+      (function () {
+        const canvas = document.getElementById("star-canvas");
+        const ctx = canvas.getContext("2d");
+        let stars = [];
+        function resize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        function init() {
+          resize();
+          stars = Array.from({ length: 180 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.2 + 0.2,
+            o: Math.random() * 0.6 + 0.1,
+            speed: Math.random() * 0.015 + 0.005,
+            phase: Math.random() * Math.PI * 2,
+          }));
+        }
+        function draw(t) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          stars.forEach((s) => {
+            const opacity = s.o + Math.sin(t * s.speed + s.phase) * 0.15;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,255,255,${opacity.toFixed(2)})`;
+            ctx.fill();
+          });
+          requestAnimationFrame(draw);
+        }
+        init();
+        requestAnimationFrame(draw);
+        window.addEventListener("resize", init);
+      })();
+    </script>
+
     <!-- MENU -->
-    <script src="menu.js"></script>
-    <!-- LOGAN -->
-    <script src="logan.js"></script>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const overlay = document.getElementById("mobile-overlay");
+      const closeBtn = document.getElementById("mobile-close");
+      function openMenu() {
+        overlay.style.display = "flex";
+        requestAnimationFrame(() => overlay.classList.add("open"));
+      }
+      function closeMenu() {
+        overlay.classList.remove("open");
+        overlay.addEventListener("transitionend", () => { overlay.style.display = "none"; }, { once: true });
+      }
+      if (hamburger) hamburger.addEventListener("click", openMenu);
+      if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+    </script>
+
+    <!-- LOGAN EASTER EGG -->
+    <script>
+      const purifier = document.querySelector(".purifier-link");
+      const egg = document.querySelector(".easter-egg");
+      purifier.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        egg.classList.toggle("hidden");
+      });
+      document.addEventListener("click", () => {
+        if (!egg.classList.contains("hidden")) egg.classList.add("hidden");
+      });
+    </script>
+
     <!-- STATS -->
-    <script src="stats.js"></script>
-    <!-- NEWS -->
-    <script src="news/news.js"></script>
+    <script>
+      fetch("https://zkillboard.com/api/stats/corporationID/98519746/")
+        .then((res) => res.json())
+        .then((data) => {
+          const fmt = (n) => {
+            if (n >= 1e12) return (n / 1e12).toFixed(1) + "T";
+            if (n >= 1e9)  return (n / 1e9).toFixed(1)  + "B";
+            if (n >= 1e6)  return (n / 1e6).toFixed(1)  + "M";
+            return n.toLocaleString();
+          };
+          document.getElementById("stat-kills").textContent = fmt(data.shipsDestroyed ?? 0);
+          document.getElementById("stat-isk").textContent   = fmt(data.iskDestroyed   ?? 0) + " ISK";
+          document.getElementById("stat-lost").textContent  = fmt(data.shipsLost      ?? 0);
+        })
+        .catch(() => {});
+    </script>
+
+    <!-- NEWS / CAROUSEL -->
+    <script>
+      const track = document.getElementById("carouselTrack");
+      let carouselIndex = 0;
+      let visibleCount = 3;
+
+      function updateVisibleCount() {
+        if (window.innerWidth <= 720) visibleCount = 1;
+        else if (window.innerWidth <= 1050) visibleCount = 2;
+        else visibleCount = 3;
+      }
+
+      function moveCarousel(dir) {
+        updateVisibleCount();
+        const item = track ? track.firstElementChild : null;
+        if (!item) return;
+        const gap = parseFloat(getComputedStyle(track).gap) || 10;
+        const imgWidth = item.offsetWidth + gap;
+        const maxIndex = Math.max(0, track.children.length - visibleCount);
+        carouselIndex = Math.min(Math.max(carouselIndex + dir, 0), maxIndex);
+        track.style.transform = `translateX(${-carouselIndex * imgWidth}px)`;
+      }
+
+      function openLightbox(img) {
+        const lightbox = document.getElementById("lightbox");
+        document.getElementById("lightboxImg").src = img.src;
+        document.getElementById("fullSizeLink").href = img.src;
+        lightbox.style.display = "flex";
+      }
+
+      function closeLightbox(e) {
+        if (e && e.target.id === "fullSizeLink") return;
+        document.getElementById("lightbox").style.display = "none";
+      }
+
+      if (track) {
+        let touchStartX = 0;
+        track.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener("touchend",   (e) => {
+          const diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
+        }, { passive: true });
+
+        fetch("assets/news/news-data.json")
+          .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+          .then((items) => {
+            items.forEach((item, i) => {
+              const div = document.createElement("div");
+              div.className = "carousel-item";
+              if (i === 0) {
+                const badge = document.createElement("div");
+                badge.className = "latest-badge";
+                badge.textContent = "HOT";
+                div.appendChild(badge);
+              }
+              const img = document.createElement("img");
+              img.src = `assets/news/${item.file}`;
+              img.className = "carousel-img";
+              img.alt = item.title;
+              img.loading = "lazy";
+              img.decoding = "async";
+              img.onclick = () => openLightbox(img);
+              div.appendChild(img);
+              const titleEl = document.createElement("div");
+              titleEl.className = "carousel-title";
+              titleEl.textContent = item.title;
+              div.appendChild(titleEl);
+              track.appendChild(div);
+            });
+            updateVisibleCount();
+          })
+          .catch(() => {
+            const msg = document.createElement("p");
+            msg.style.cssText = "color:#555;font-size:0.85rem;letter-spacing:1px;padding:20px;margin:0;";
+            msg.textContent = "No news available.";
+            track.appendChild(msg);
+          });
+
+        window.addEventListener("resize", () => {
+          updateVisibleCount();
+          carouselIndex = 0;
+          track.style.transform = "translateX(0)";
+        });
+      }
+    </script>
+
     <!-- ANALYTICS -->
     <script>
       var sc_project = 13214553;
@@ -212,18 +364,10 @@
       var sc_security = "ef14e102";
     </script>
     <script src="https://www.statcounter.com/counter/counter.js" async></script>
-    <noscript
-      ><div class="statcounter">
-        <a
-          title="Web Analytics Made Easy - Statcounter"
-          href="https://statcounter.com/"
-          target="_blank"
-          ><img
-            class="statcounter"
-            src="https://c.statcounter.com/13214553/0/ef14e102/1/"
-            alt="Web Analytics Made Easy - Statcounter"
-            referrerpolicy="no-referrer-when-downgrade"
-        /></a></div
-    ></noscript>
+    <noscript><div class="statcounter">
+      <a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/" target="_blank">
+        <img class="statcounter" src="https://c.statcounter.com/13214553/0/ef14e102/1/" alt="Web Analytics Made Easy - Statcounter" referrerpolicy="no-referrer-when-downgrade" />
+      </a></div>
+    </noscript>
   </body>
 </html>

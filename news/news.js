@@ -73,6 +73,8 @@ fetch("assets/news/news-data.json")
       img.src = `assets/news/${item.file}`;
       img.className = "carousel-img";
       img.alt = item.title;
+      img.loading = "lazy";
+      img.decoding = "async";
       img.onclick = () => openLightbox(img);
       div.appendChild(img);
 
