@@ -350,15 +350,15 @@ a:visited { color: #aaa; }
 .stat { display: flex; flex-direction: column; }
 
 .stat-label {
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #555;
+  color: #888;
   font-family: 'Share Tech Mono', monospace;
 }
 
 .stat-value {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-family: 'Share Tech Mono', monospace;
   color: #fff;
   margin-top: 2px;
@@ -370,8 +370,8 @@ a:visited { color: #aaa; }
   position: fixed;
   bottom: 0; left: 0;
   padding: 0.5rem 2rem;
-  color: #444;
-  font-size: 0.7rem;
+  color: #888;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   text-transform: lowercase;
   z-index: 10;
@@ -379,8 +379,8 @@ a:visited { color: #aaa; }
 }
 
 .footer p { margin: 0; line-height: 1.5; }
-.footer a { color: #555; font-size: inherit; display: inline; }
-.footer a:hover { color: #aaa; }
+.footer a { color: #888; font-size: inherit; display: inline; }
+.footer a:hover { color: #ccc; }
 
 /* ===== EASTER EGG ===== */
 
