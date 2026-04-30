@@ -148,7 +148,7 @@ a:visited { color: #aaa; }
 
 .nav-links a {
   text-decoration: none;
-  margin: 0 0.4rem;
+  margin: 0 0.18rem;
   font-weight: normal;
   transition: color 0.2s;
   color: #aaa;
@@ -159,7 +159,7 @@ a:visited { color: #aaa; }
 
 .nav-links a:hover { color: #fff; }
 
-.sep { display: inline-block; color: rgba(255,255,255,0.2); font-size: 0.8rem; margin: 0 4px; }
+.sep { display: inline-block; color: #fff; font-size: 0.8rem; margin: 0 2px; }
 
 .purifier-icon {
   width: 22px;
