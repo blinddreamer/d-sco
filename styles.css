@@ -93,13 +93,12 @@ a:visited { color: #aaa; }
 #bg-video {
   position: fixed;
   z-index: -4;
-  top: 50%;
-  left: 50%;
+  bottom: 0;
+  right: 0;
   min-width: 100vw;
   min-height: 100vh;
   width: auto;
   height: auto;
-  transform: translate(-50%, -50%);
 }
 
 #scanlines {
