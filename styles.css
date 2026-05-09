@@ -266,6 +266,7 @@ a:visited { color: #aaa; }
 }
 
 
+
 @keyframes h1-color {
   0%, 96.67%, 100% { color: #fff; }
   97%              { color: #fff; animation-timing-function: step-start; }
