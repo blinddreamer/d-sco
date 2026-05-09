@@ -188,8 +188,8 @@ a:visited { color: #aaa; }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .content.fade-out {
@@ -197,8 +197,8 @@ a:visited { color: #aaa; }
 }
 
 @keyframes fade-out {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(-6px); }
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 /* ===== NEWS PAGE CENTERING ===== */
