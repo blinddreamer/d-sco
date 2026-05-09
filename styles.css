@@ -96,7 +96,6 @@ a:visited { color: #aaa; }
   top: 0; left: 0;
   width: 100%; height: 100vh;
   object-fit: cover;
-  filter: brightness(0.75) saturate(1.1);
 }
 
 #scanlines {
@@ -154,7 +153,7 @@ a:visited { color: #aaa; }
   color: #aaa;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 0.72rem;
+  font-size: 0.9rem;
 }
 
 .nav-links a:hover { color: #fff; }
@@ -202,6 +201,39 @@ a:visited { color: #aaa; }
   to   { opacity: 0; transform: translateY(-6px); }
 }
 
+/* ===== NEWS PAGE CENTERING ===== */
+
+#page-news {
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#page-news h1,
+#page-news h3 {
+  margin-left: 0;
+}
+
+/* ===== HOMEPAGE HERO ===== */
+
+#page-home {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 4rem 6rem;
+}
+
+#page-home h1 {
+  font-size: clamp(3rem, 11vw, 9rem);
+  margin: 0 auto;
+  max-width: 16ch;
+  text-shadow:
+    0 0 20px rgba(0,0,0,0.9),
+    0 0 40px rgba(0,0,0,0.7),
+    0 0 80px rgba(0,0,0,0.5);
+}
+
 /* ===== HERO EYEBROW ===== */
 
 .hero-eyebrow {
@@ -239,12 +271,12 @@ a:visited { color: #aaa; }
 
 .content h1::before {
   color: rgba(255,60,60,0.7);
-  animation: glitch-top 10s infinite;
+  animation: glitch-top 30s infinite;
 }
 
 .content h1::after {
   color: rgba(60,200,255,0.7);
-  animation: glitch-bot 10s infinite;
+  animation: glitch-bot 30s infinite;
 }
 
 @keyframes glitch-top {
@@ -511,7 +543,8 @@ a:visited { color: #aaa; }
   .news-page #page-news {
     position: relative;
     top: auto;
-    left: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     padding-top: 80px;
     padding-bottom: 80px;
     max-width: calc(100vw - 4rem);
@@ -725,6 +758,7 @@ a:visited { color: #aaa; }
   .nav-links a, .nav-links .sep, .nav-links .purifier-link { display: none !important; }
   .navbar { margin-top: 10px; padding: 0.5rem 1rem; }
   .content { left: 20px; max-width: calc(100vw - 40px); top: 30%; }
+  #page-home { left: 50%; top: 50%; max-width: calc(100vw - 40px); }
   .hero-eyebrow { display: none; }
   .apply-btn { font-size: 0.7rem; padding: 0.5rem 1rem; }
   .corp-stats { display: none; }
