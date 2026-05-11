@@ -549,7 +549,7 @@ a:visited { color: #aaa; }
   }
 }
 
-@media (max-width: 720px) { .bsky-col { display: none; } }
+@media (max-width: 1399px) { .bsky-col { display: none; } }
 
 /* ===== CAROUSEL ===== */
 
