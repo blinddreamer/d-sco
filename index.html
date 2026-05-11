@@ -95,6 +95,12 @@
 <h1 data-text="Deep Space Coalition">Deep Space Coalition</h1>
     </div>
 
+    <!-- 404 PAGE -->
+    <div class="content" id="page-404" style="display:none">
+      <h1 data-text="Can't I holiday in peace for once?">Can't I holiday in peace for once?</h1>
+      <h3>404 - Not Found</h3>
+    </div>
+
     <!-- NEWS PAGE -->
     <div class="content" id="page-news" style="display:none">
       <h1 data-text="D-SCO WEEKLY NEWS">D-SCO Weekly News</h1>
@@ -144,7 +150,12 @@
     <script>
       const path = window.location.pathname;
       const isNews = path.startsWith("/news");
-      if (isNews) {
+      const is404 = new URLSearchParams(location.search).has("not-found");
+      if (is404) {
+        document.title = "Deep Space Coalition | 404";
+        document.getElementById("page-home").style.display = "none";
+        document.getElementById("page-404").style.display = "";
+      } else if (isNews) {
         document.title = "Deep Space Coalition | NEWS";
         document.getElementById("page-home").style.display = "none";
         document.getElementById("page-news").style.display = "";
