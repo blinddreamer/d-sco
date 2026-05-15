@@ -108,20 +108,20 @@
       <div class="news-layout">
         <div class="news-col">
           <div class="carousel-wrapper">
-            <button class="nav-btn left" onclick="moveCarousel(-1)" aria-label="Previous">‹</button>
+            <button class="nav-btn left" id="carouselPrev" aria-label="Previous">‹</button>
             <div class="carousel-window">
               <div class="carousel-track" id="carouselTrack"></div>
             </div>
-            <button class="nav-btn right" onclick="moveCarousel(1)" aria-label="Next">›</button>
+            <button class="nav-btn right" id="carouselNext" aria-label="Next">›</button>
           </div>
         </div>
         <div class="bsky-col">
           <div class="bsky-feed" id="bskyFeed"></div>
         </div>
       </div>
-      <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="News image viewer">
         <img id="lightboxImg" alt="News" />
-        <a id="fullSizeLink" href="#" target="_blank">Open Full Size</a>
+        <a id="fullSizeLink" href="#" target="_blank" rel="noopener noreferrer">Open Full Size</a>
       </div>
     </div>
 
@@ -143,7 +143,7 @@
 
     <footer class="footer">
       <p>&copy; d-sco.rocks</p>
-      <p>EVE and related materials are trademarks of <a href="https://www.ccpgames.com/" target="_blank">CCP hf</a></p>
+      <p>EVE and related materials are trademarks of <a href="https://www.ccpgames.com/" target="_blank" rel="noopener noreferrer">CCP hf</a></p>
     </footer>
 
     <!-- ROUTING -->
@@ -262,7 +262,7 @@
     <!-- STATS -->
     <script>
       fetch("https://zkillboard.com/api/stats/corporationID/98519746/")
-        .then((res) => res.json())
+        .then((res) => { if (!res.ok) throw new Error(res.status); return res.json(); })
         .then((data) => {
           const fmt = (n) => {
             if (n >= 1e12) return (n / 1e12).toFixed(1) + "T";
@@ -274,7 +274,7 @@
           document.getElementById("stat-isk").textContent   = fmt(data.iskDestroyed   ?? 0) + " ISK";
           document.getElementById("stat-lost").textContent  = fmt(data.shipsLost      ?? 0);
         })
-        .catch(() => {});
+        .catch((e) => console.error("Failed to load stats:", e));
     </script>
 
     <!-- NEWS / CAROUSEL -->
@@ -314,7 +314,7 @@
 
       if (track) {
         let touchStartX = 0;
-        track.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener("touchstart", (e) => { if (e.touches.length) touchStartX = e.touches[0].clientX; }, { passive: true });
         track.addEventListener("touchend",   (e) => {
           const diff = touchStartX - e.changedTouches[0].clientX;
           if (Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
@@ -361,6 +361,11 @@
           track.style.transform = "translateX(0)";
         });
       }
+
+      document.getElementById("carouselPrev")?.addEventListener("click", () => moveCarousel(-1));
+      document.getElementById("carouselNext")?.addEventListener("click", () => moveCarousel(1));
+      document.getElementById("lightbox")?.addEventListener("click", closeLightbox);
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
     </script>
 
     <!-- ANALYTICS -->
@@ -371,7 +376,7 @@
     </script>
     <script src="https://www.statcounter.com/counter/counter.js" async></script>
     <noscript><div class="statcounter">
-      <a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/" target="_blank">
+      <a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/" target="_blank" rel="noopener noreferrer">
         <img class="statcounter" src="https://c.statcounter.com/13214553/0/ef14e102/1/" alt="Web Analytics Made Easy - Statcounter" referrerpolicy="no-referrer-when-downgrade" />
       </a></div>
     </noscript>
