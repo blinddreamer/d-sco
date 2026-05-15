@@ -119,9 +119,9 @@
           <div class="bsky-feed" id="bskyFeed"></div>
         </div>
       </div>
-      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="News image viewer">
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="News image viewer" onclick="closeLightbox()">
         <img id="lightboxImg" alt="News" />
-        <a id="fullSizeLink" href="#" target="_blank" rel="noopener noreferrer">Open Full Size</a>
+        <a id="fullSizeLink" href="#" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Open Full Size</a>
       </div>
     </div>
 
@@ -307,8 +307,7 @@
         lightbox.style.display = "flex";
       }
 
-      function closeLightbox(e) {
-        if (e && e.target.id === "fullSizeLink") return;
+      function closeLightbox() {
         document.getElementById("lightbox").style.display = "none";
       }
 
@@ -364,7 +363,6 @@
 
       document.getElementById("carouselPrev")?.addEventListener("click", () => moveCarousel(-1));
       document.getElementById("carouselNext")?.addEventListener("click", () => moveCarousel(1));
-      document.getElementById("lightbox")?.addEventListener("click", closeLightbox);
       document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
     </script>
 

@@ -2,3 +2,11 @@
 .gitignore
 .dockerignore
 README.md
+.github
+.claude
+.superpowers
+docs
+serve.json
+Thumbs.db
+.DS_Store
+*.log
