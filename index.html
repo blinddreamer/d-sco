@@ -230,54 +230,9 @@
       })();
     </script>
 
-    <!-- MENU -->
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const overlay = document.getElementById("mobile-overlay");
-      const closeBtn = document.getElementById("mobile-close");
-      function openMenu() {
-        overlay.style.display = "flex";
-        requestAnimationFrame(() => overlay.classList.add("open"));
-      }
-      function closeMenu() {
-        overlay.classList.remove("open");
-        overlay.addEventListener("transitionend", () => { overlay.style.display = "none"; }, { once: true });
-      }
-      if (hamburger) hamburger.addEventListener("click", openMenu);
-      if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-    </script>
-
-    <!-- LOGAN EASTER EGG -->
-    <script>
-      const purifier = document.querySelector(".purifier-link");
-      const egg = document.querySelector(".easter-egg");
-      purifier.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        egg.classList.toggle("hidden");
-      });
-      document.addEventListener("click", () => {
-        if (!egg.classList.contains("hidden")) egg.classList.add("hidden");
-      });
-    </script>
-
-    <!-- STATS -->
-    <script>
-      fetch("https://zkillboard.com/api/stats/corporationID/98519746/")
-        .then((res) => { if (!res.ok) throw new Error(res.status); return res.json(); })
-        .then((data) => {
-          const fmt = (n) => {
-            if (n >= 1e12) return (n / 1e12).toFixed(1) + "T";
-            if (n >= 1e9)  return (n / 1e9).toFixed(1)  + "B";
-            if (n >= 1e6)  return (n / 1e6).toFixed(1)  + "M";
-            return n.toLocaleString();
-          };
-          document.getElementById("stat-kills").textContent = fmt(data.shipsDestroyed ?? 0);
-          document.getElementById("stat-isk").textContent   = fmt(data.iskDestroyed   ?? 0) + " ISK";
-          document.getElementById("stat-lost").textContent  = fmt(data.shipsLost      ?? 0);
-        })
-        .catch((e) => console.error("Failed to load stats:", e));
-    </script>
+    <script src="menu.js"></script>
+    <script src="logan.js"></script>
+    <script src="stats.js"></script>
 
     <!-- NEWS / CAROUSEL -->
     <script>
