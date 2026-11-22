@@ -1,6 +1,9 @@
 # Use the official Nginx image
 FROM nginx:alpine
 
+# Pull Alpine security fixes not yet in the base image
+RUN apk upgrade --no-cache
+
 # Copy custom Nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
